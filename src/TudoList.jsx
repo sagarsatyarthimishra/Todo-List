@@ -26,22 +26,33 @@ export default function TudoList() {
   let upperCase = () => {
     setTasks((prevTodos) => {
       return prevTodos.map((task) => {
-        return { ...task, work: task.work.toUpperCase() };
+        return { ...task, isDone: true }; // Toggle isDone status for all tasks
       });
     });
   };
 
-  let upperCaseOne = (id) => {
-    setTasks((prevTodos) =>
-      prevTodos.map((task) => {
-        if (task.id === id) {
-          return { ...task, work: task.work.toUpperCase() };
-        } else {
-          return task;
-        }
-      })
-    );
+  let upperCaseOne = () => {
+    setTasks((prevTodos) => {
+      return prevTodos.map((task) => {
+        return { ...task, isDone: false }; // Toggle isDone status for all tasks
+      });
+    });
   };
+
+  // Function to convert the work of a specific task to uppercase
+  // This function is commented out as it is not being used in the current implementation
+
+  // let upperCaseOne = (id) => {
+  //   setTasks((prevTodos) =>
+  //     prevTodos.map((task) => {
+  //       if (task.id === id) {
+  //         return { ...task, work: task.work.toUpperCase() };
+  //       } else {
+  //         return task;
+  //       }
+  //     })
+  //   );
+  // };
 
   let Check = (id) => {
     setTasks((prevTodos) =>
@@ -69,7 +80,7 @@ export default function TudoList() {
         value={newTask}
         placeholder="Add Task"
         onChange={UpdateTask}
-        onKeyDown={handleKeyDown} // Call handleKeyDown when a key is pressed     
+        onKeyDown={handleKeyDown} // Call handleKeyDown when a key is pressed
       />
       <br />
       <br />
@@ -125,12 +136,6 @@ export default function TudoList() {
               <i className="fa-sharp fa-regular fa-circle-check"></i>
             </span>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button
-              onClick={() => upperCaseOne(task.id)}
-              style={{ backgroundColor: "#5affd5", color: "white" }}
-            >
-              UpperCaseOne
-            </button>
           </li>
         ))}
       </ul>
@@ -139,7 +144,14 @@ export default function TudoList() {
         onClick={upperCase}
         style={{ backgroundColor: "#5affd5", color: "white" }}
       >
-        UpperCaseAll
+        Mark All
+      </button>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <button
+        onClick={() => upperCaseOne(tasks.id)}
+        style={{ backgroundColor: "#5affd5", color: "white" }}
+      >
+        UnMark All
       </button>
     </div>
   );
