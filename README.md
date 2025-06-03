@@ -11,10 +11,6 @@ A simple and interactive Todo List application built with React and Vite. Add, m
 - **Responsive UI**: Clean, centered layout with styled components.
 - **Persistent Unique Tasks**: Each task is uniquely identified using `uuid`.
 
-## Demo
-
-![App Screenshot](src/assets/tudo.png)
-
 ## Getting Started
 
 ### Prerequisites
